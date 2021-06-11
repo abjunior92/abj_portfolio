@@ -9,7 +9,14 @@ module.exports = {
     // You can overwrite values here that are used for the SEO component
     // Of course you can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-cara/gatsby-config.js
-    siteTitleAlt: `Abj - Portfolio`
+    siteTitle: `Abj - Portfolio`,
+    siteTitleAlt: `Abj - Portfolio`,
+    siteHeadline: `Abj - Portfolio`,
+    siteUrl: `https://abjportfolio.netlify.app/`,
+    siteDescription: `My Personal Portfolio`,
+    siteLanguage: `en`,
+    siteImage: `/images/presentation.png`,
+    author: `Andrea Junior Berselli`
   },
   plugins: [
     {
@@ -28,7 +35,7 @@ module.exports = {
       options: {
         name: `Abj - Portfolio`,
         short_name: `Portfolio`,
-        description: `Playful and Colorful One-Page portfolio featuring Parallax effects and animations`,
+        description: `My Personal Portfolio`,
         start_url: `/`,
         background_color: `#141821`,
         theme_color: `#f6ad55`,
