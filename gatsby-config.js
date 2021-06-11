@@ -15,7 +15,7 @@ module.exports = {
     siteUrl: `https://abjportfolio.netlify.app/`,
     siteDescription: `My Personal Portfolio`,
     siteLanguage: `en`,
-    siteImage: `/images/presentation.png`,
+    siteImage: `https://abjportfolio.netlify.app/src/images/presentation.png`,
     author: `Andrea Junior Berselli`
   },
   plugins: [
