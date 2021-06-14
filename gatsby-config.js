@@ -12,10 +12,10 @@ module.exports = {
     siteTitle: `Abj - Portfolio`,
     siteTitleAlt: `Abj - Portfolio`,
     siteHeadline: `Abj - Portfolio`,
-    siteUrl: `https://abjportfolio.netlify.app/`,
+    siteUrl: `https://abjportfolio.netlify.app`,
     siteDescription: `My Personal Portfolio`,
     siteLanguage: `en`,
-    siteImage: `/src/images/presentation.png`,
+    siteImage: `/presentation.png`,
     author: `Andrea Junior Berselli`
   },
   plugins: [
