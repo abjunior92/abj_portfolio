@@ -54,7 +54,16 @@ const Contact = ({
     </Divider>
     <Content speed={0.4} offset={offset} factor={factor}>
       <Inner>
-        <ContactMDX />
+        <div
+          sx={{
+            display: `grid`,
+            gridGap: [4, 4, 4, 5],
+            gridTemplateColumns: [`1fr`, `1fr`, `repeat(2, 1fr)`],
+            h2: { gridColumn: `-1/1`, color: `white !important` }
+          }}
+        >
+          <ContactMDX />
+        </div>
       </Inner>
       <Footer />
     </Content>
