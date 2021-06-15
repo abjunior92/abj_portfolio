@@ -55,6 +55,10 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: "gatsby-plugin-theme-ui",
+      options: {}
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-netlify`,

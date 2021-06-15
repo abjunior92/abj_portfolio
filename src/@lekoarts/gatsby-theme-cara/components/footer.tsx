@@ -1,17 +1,23 @@
 /** @jsx jsx */
-import { Box, Flex, Link, useColorMode, jsx } from "theme-ui"
+import { Box, Flex, Link, useColorMode, jsx } from "theme-ui";
 
 const Footer = () => {
-  const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
+  const [colorMode, setColorMode] = useColorMode();
+  const isDark = colorMode === `dark`;
   const toggleColorMode = (e: any) => {
-    setColorMode(isDark ? `light` : `dark`)
-  }
+    setColorMode(isDark ? `light` : `dark`);
+  };
 
   return (
     <Box as="footer" variant="footer">
       <button
-        sx={{ variant: `buttons.toggle`, fontWeight: `semibold`, display: `block`, mx: `auto`, mb: 3 }}
+        sx={{
+          variant: `buttons.toggle`,
+          fontWeight: `semibold`,
+          display: `block`,
+          mx: `auto`,
+          mb: 3
+        }}
         onClick={toggleColorMode}
         type="button"
         aria-label="Toggle dark mode"
@@ -27,7 +33,7 @@ const Footer = () => {
           mt: 3,
           color: `text`,
           fontWeight: `semibold`,
-          a: { color: `text` },
+          a: { color: `text` }
         }}
       >
         Develop by Andrea Junior Berselli, based on
@@ -40,7 +46,7 @@ const Footer = () => {
           color: `text`,
           fontWeight: `semibold`,
           fontSize: "12px",
-          a: { color: `text` },
+          a: { color: `text` }
         }}
       >
         <Link
@@ -60,7 +66,7 @@ const Footer = () => {
         </Link>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
