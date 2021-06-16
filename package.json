@@ -16,9 +16,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
     "@emotion/react": "^11.4.0",
     "@lekoarts/gatsby-theme-cara": "^1.2.18",
+    "@mdx-js/mdx": "^1.6.22",
     "@react-spring/parallax": "^9.2.3",
     "gatsby": "^2.25.3",
     "gatsby-plugin-gatsby-cloud": "^1.0.1",

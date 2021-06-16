@@ -140,6 +140,15 @@ const theme = merge(tailwind, {
         fontSize: [2, 3, 4]
       }
     }
+  },
+  text: {
+    caps: {
+      textTransform: "uppercase",
+      letterSpacing: "0.2em"
+    },
+    header: {
+      letterSpacing: "0.2em"
+    }
   }
 });
 

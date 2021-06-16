@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import * as React from "react";
 import { Parallax } from "@react-spring/parallax";
 import Layout from "../components/layout";
