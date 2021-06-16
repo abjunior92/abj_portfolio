@@ -36,7 +36,7 @@ const Footer = () => {
           a: { color: `text` }
         }}
       >
-        Develop by Andrea Junior Berselli, based on
+        Developed by Andrea Junior Berselli
       </Flex>
       <Flex
         sx={{
