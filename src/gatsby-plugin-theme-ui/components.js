@@ -3,6 +3,7 @@ import ProjectCard from "../@lekoarts/gatsby-theme-cara/components/project-card"
 import ContactCard from "../@lekoarts/gatsby-theme-cara/components/contact-card";
 import SectionText from "../@lekoarts/gatsby-theme-cara/components/section-text";
 import HeaderText from "../@lekoarts/gatsby-theme-cara/components/header-text";
+import IconsPicker from "../@lekoarts/gatsby-theme-cara/components/icons-picker";
 
 const components = {
   // eslint-disable-next-line react/display-name
@@ -18,7 +19,9 @@ const components = {
   // eslint-disable-next-line react/display-name
   SectionText: ({ text, ...props }) => <SectionText {...props} text={text} />,
   // eslint-disable-next-line react/display-name
-  HeaderText: ({ text, ...props }) => <HeaderText {...props} text={text} />
+  HeaderText: ({ text, ...props }) => <HeaderText {...props} text={text} />,
+  // eslint-disable-next-line react/display-name
+  IconsPicker: ({ icon, ...props }) => <IconsPicker {...props} icon={icon} />
 };
 
 export default components;

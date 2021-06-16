@@ -7,7 +7,13 @@ type SectionTextProps = {
 
 const SectionText = ({ text }: SectionTextProps) => (
   <div
-    sx={{ display: "flex", alignItems: "center", pb: "16px", fontSize: "36px" }}
+    sx={{
+      display: "flex",
+      width: "100%",
+      alignItems: "center",
+      pb: "8px",
+      fontSize: "36px"
+    }}
   >
     <Text variant="caps">{text}</Text>
   </div>

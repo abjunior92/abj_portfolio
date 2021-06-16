@@ -42,7 +42,7 @@ const theme = merge(tailwind, {
   footer: {
     textAlign: `center`,
     display: `block`,
-    position: `absolute`,
+    position: `fixed`,
     bottom: 0,
     color: `textMuted`,
     px: [2, 3],

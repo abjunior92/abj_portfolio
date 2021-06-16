@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import IconsPicker from "./icons-picker";
 
 type ContactCardProps = {
-  icon: React.ReactNode;
+  icon: string;
   link: string;
   title: string;
 };
@@ -19,7 +20,7 @@ const ContactCard = ({ icon, link, title }: ContactCardProps) => (
           height: "24px"
         }}
       >
-        {icon}
+        <IconsPicker icon={icon} />
       </span>
     )}
     <a
