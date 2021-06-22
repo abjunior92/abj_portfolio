@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Global } from "@emotion/react";
 import SEO from "./seo";
+import "../../../fonts/layout.css";
 
 type LayoutProps = { children: React.ReactNode; className?: string };
 
@@ -25,7 +26,7 @@ const Layout = ({ children, className = `` }: LayoutProps) => (
           borderStyle: `none`
         },
         pre: {
-          fontFamily: `monospace`,
+          fontFamily: `IBMPlexMono-Regular`,
           fontSize: `1em`
         },
         "[hidden]": {
