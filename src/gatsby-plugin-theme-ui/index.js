@@ -1,6 +1,8 @@
 import { merge } from "theme-ui";
 import { tailwind } from "@theme-ui/presets";
 
+const bg = `#141821`;
+
 const theme = merge(tailwind, {
   initialColorModeName: `dark`,
   config: {
@@ -11,12 +13,12 @@ const theme = merge(tailwind, {
     secondary: tailwind.colors.indigo[6],
     text: tailwind.colors.gray[3],
     heading: tailwind.colors.white,
-    background: `#141821`,
+    background: bg,
     divider: tailwind.colors.gray[8],
     textMuted: tailwind.colors.gray[5],
     icon_brightest: tailwind.colors.white,
-    icon_darker: tailwind.colors.gray[7],
-    icon_darkest: tailwind.colors.gray[8],
+    icon_darker: tailwind.colors.gray[8],
+    icon_darkest: tailwind.colors.gray[9],
     icon_red: tailwind.colors.red[6],
     icon_blue: tailwind.colors.blue[6],
     icon_orange: tailwind.colors.orange[5],
@@ -33,8 +35,8 @@ const theme = merge(tailwind, {
         divider: tailwind.colors.gray[2],
         textMuted: tailwind.colors.gray[6],
         icon_brightest: tailwind.colors.gray[2],
-        icon_darker: tailwind.colors.gray[4],
-        icon_darkest: tailwind.colors.gray[6]
+        icon_darker: tailwind.colors.gray[3],
+        icon_darkest: tailwind.colors.gray[2]
       }
     }
   },
@@ -50,6 +52,7 @@ const theme = merge(tailwind, {
   },
   styles: {
     root: {
+      fontFamily: "IBMPlexMono-Regular",
       margin: 0,
       padding: 0,
       boxSizing: `border-box`,
@@ -143,11 +146,27 @@ const theme = merge(tailwind, {
   },
   text: {
     caps: {
-      textTransform: "uppercase",
-      letterSpacing: "0.2em"
+      textTransform: `uppercase`,
+      letterSpacing: `0.2em`
     },
     header: {
-      letterSpacing: "0.2em"
+      fontFamily: `IBMPlexMono-Thin`,
+      textTransform: `uppercase`,
+      letterSpacing: `0.2em`,
+      color: `heading`,
+      fontSize: 56,
+      "@media screen and (max-width: 480px)": {
+        fontSize: 42
+      }
+    },
+    section: {
+      textTransform: `uppercase`,
+      letterSpacing: `0.2em`,
+      pb: "8px",
+      fontSize: 36,
+      "@media screen and (max-width: 480px)": {
+        fontSize: 28
+      }
     }
   }
 });

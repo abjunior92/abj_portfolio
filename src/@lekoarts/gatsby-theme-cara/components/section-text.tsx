@@ -10,12 +10,10 @@ const SectionText = ({ text }: SectionTextProps) => (
     sx={{
       display: "flex",
       width: "100%",
-      alignItems: "center",
-      pb: "8px",
-      fontSize: "36px"
+      alignItems: "center"
     }}
   >
-    <Text variant="caps">{text}</Text>
+    <Text variant="section">{text}</Text>
   </div>
 );
 

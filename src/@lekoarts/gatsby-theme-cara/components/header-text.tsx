@@ -6,7 +6,12 @@ type HeaderTextProps = {
 };
 
 const HeaderText = ({ text }: HeaderTextProps) => (
-  <div sx={{ display: "flex", alignItems: "center", fontSize: "56px" }}>
+  <div
+    sx={{
+      display: "flex",
+      alignItems: "center"
+    }}
+  >
     <Text variant="header">{text}</Text>
   </div>
 );
