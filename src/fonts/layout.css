@@ -6,39 +6,6 @@
 
 @font-face {
   font-family: "IBMPlexMono-Regular";
-  font-style: italic;
   src: local("IBMPlexMono-Regular"),
     url("./IBMPlexMono-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "IBMPlexMono-SemiBold";
-  font-style: italic;
-  src: local("IBMPlexMono-SemiBold"),
-    url("./IBMPlexMono-SemiBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "IBMPlexMono-BoldItalic";
-  font-style: italic;
-  src: local("IBMPlexMono-BoldItalic"),
-    url("./IBMPlexMono-BoldItalic.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto-Bold";
-  font-style: italic;
-  src: local("Roboto-Bold"), url("./Roboto-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto-Regular";
-  font-style: italic;
-  src: local("Roboto-Regular"), url("./Roboto-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto-Thin";
-  font-style: italic;
-  src: local("Roboto-Thin"), url("./Roboto-Thin.ttf") format("truetype");
 }
