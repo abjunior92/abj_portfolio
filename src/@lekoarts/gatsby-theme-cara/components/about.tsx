@@ -105,7 +105,7 @@ const About = ({ offset, factor = 1 }: { offset: number; factor?: number }) => (
         top="70%"
       />
     </Divider>
-    <Content speed={0.4} offset={offset} factor={factor}>
+    <Content speed={0.4} offset={offset - 0.2} factor={factor}>
       <Inner>
         <AboutMDX />
       </Inner>
