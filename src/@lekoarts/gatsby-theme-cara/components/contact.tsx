@@ -8,6 +8,7 @@ import { UpDown, UpDownWide, waveAnimation } from "../styles/animations";
 import Footer from "./footer";
 // @ts-ignore
 import ContactMDX from "../sections/contact";
+import SectionText from "./section-text";
 
 const Contact = ({
   offset,
@@ -54,6 +55,7 @@ const Contact = ({
     </Divider>
     <Content speed={0.4} offset={offset} factor={factor}>
       <Inner>
+        <SectionText text="Find me" />
         <div
           sx={{
             display: `grid`,
@@ -62,6 +64,8 @@ const Contact = ({
             h2: { gridColumn: `-1/1`, color: `white !important` },
             mb: [256],
             "@media screen and (max-width: 480px)": {
+              gridTemplateColumns: `repeat(auto-fit, minmax(128px, 1fr))`,
+              gridGap: [4],
               mb: [456]
             }
           }}

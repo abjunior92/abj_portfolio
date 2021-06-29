@@ -7,6 +7,7 @@ import Svg from "./svg";
 import { UpDown, UpDownWide } from "../styles/animations";
 // @ts-ignore
 import ProjectsMDX from "../sections/projects";
+import SectionText from "./section-text";
 
 const Projects = ({
   offset,
@@ -23,8 +24,9 @@ const Projects = ({
       offset={1.1}
       factor={factor}
     />
-    <Content speed={0.4} offset={offset - 0.1} factor={factor}>
+    <Content speed={0.4} offset={offset} factor={factor}>
       <Inner>
+        <SectionText text="My digital skills" />
         <div
           sx={{
             display: `grid`,
@@ -35,6 +37,9 @@ const Projects = ({
         >
           <ProjectsMDX />
         </div>
+      </Inner>
+      <Inner>
+        <SectionText text="My organization skills" />
       </Inner>
     </Content>
     <Divider speed={0.1} offset={offset} factor={factor}>

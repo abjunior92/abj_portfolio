@@ -10,7 +10,8 @@ const SectionText = ({ text }: SectionTextProps) => (
     sx={{
       display: "flex",
       width: "100%",
-      alignItems: "center"
+      alignItems: "center",
+      mb: 4
     }}
   >
     <Text variant="section">{text}</Text>
