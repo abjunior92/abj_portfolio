@@ -6,9 +6,10 @@ type ContactCardProps = {
   icon: string;
   link: string;
   title: string;
+  switchColor: string;
 };
 
-const ContactCard = ({ icon, link, title }: ContactCardProps) => (
+const ContactCard = ({ icon, switchColor, link, title }: ContactCardProps) => (
   <div sx={{ display: "flex", alignItems: "center", pb: "20px" }}>
     {icon && (
       <span
@@ -20,7 +21,7 @@ const ContactCard = ({ icon, link, title }: ContactCardProps) => (
           height: "24px"
         }}
       >
-        <IconsPicker icon={icon} />
+        <IconsPicker icon={icon} switchColor={switchColor} />
       </span>
     )}
     <a
