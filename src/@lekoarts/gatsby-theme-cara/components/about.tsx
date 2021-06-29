@@ -6,6 +6,7 @@ import Svg from "./svg";
 import { UpDown, UpDownWide } from "../styles/animations";
 // @ts-ignore
 import AboutMDX from "../sections/about";
+import SectionText from "./section-text";
 
 const About = ({ offset, factor = 1 }: { offset: number; factor?: number }) => (
   <div>
@@ -105,8 +106,9 @@ const About = ({ offset, factor = 1 }: { offset: number; factor?: number }) => (
         top="70%"
       />
     </Divider>
-    <Content speed={0.4} offset={offset - 0.2} factor={factor}>
+    <Content speed={0.4} offset={offset} factor={factor}>
       <Inner>
+        <SectionText text="About me" />
         <AboutMDX />
       </Inner>
     </Content>
