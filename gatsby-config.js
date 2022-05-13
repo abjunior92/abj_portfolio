@@ -37,7 +37,7 @@ module.exports = {
         short_name: `Portfolio`,
         description: `My Personal Portfolio`,
         start_url: `/`,
-        background_color: `#141821`,
+        background_color: `#121212`,
         theme_color: `#f6ad55`,
         display: `standalone`,
         icon: `src/images/rick_sanchez_avatar.png`,

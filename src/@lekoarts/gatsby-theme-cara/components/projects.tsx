@@ -17,13 +17,13 @@ const Projects = ({
   factor?: number;
 }) => (
   <div>
-    <Divider
-      bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+    {/* <Divider
+      bg="linear-gradient(to right, #141821 0%, #121212 100%)"
       sx={{ clipPath: `polygon(0 15%, 100% 25%, 100% 85%, 0 75%)` }}
       speed={-0.2}
       offset={1.1}
       factor={factor}
-    />
+    /> */}
     <Content speed={0.4} offset={offset} factor={factor}>
       <Inner>
         <SectionText text="My digital skills" />

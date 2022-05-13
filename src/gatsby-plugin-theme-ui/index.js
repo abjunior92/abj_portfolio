@@ -1,7 +1,7 @@
 import { merge } from "theme-ui";
 import { tailwind } from "@theme-ui/presets";
 
-const bg = `#141821`;
+const bg = `#121212`;
 
 const theme = merge(tailwind, {
   initialColorModeName: `dark`,
