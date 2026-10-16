@@ -7,6 +7,8 @@ import {
   IconBrandLinkedin,
   IconBrandTelegram,
   IconBrandWhatsapp,
+  IconChevronLeft,
+  IconChevronRight,
   IconCode,
   IconMail,
   IconMapPin,
@@ -16,6 +18,7 @@ import {
 import Layout from "../layouts/Layout.astro";
 import { loadGithubActivity, toWeekColumns } from "../data/github";
 import { profile } from "../data/profile";
+import { skillIcon } from "../data/skill-icons";
 
 const year = new Date().getFullYear();
 
@@ -139,7 +142,7 @@ const marks = [
         <li>
           <IconBallBasketball aria-hidden="true" />
           <span>
-            {profile.baskin.label}{" "}
+            {profile.baskin.label} @
             <a href={profile.baskin.url} rel="noopener noreferrer">{profile.baskin.handle}</a>
           </span>
         </li>
@@ -196,16 +199,56 @@ const marks = [
     </header>
 
     <main>
-      <section>
-        <h2>My digital skills</h2>
-        <ul class="skills">
-          {profile.skills.map((skill) => <li>{skill}</li>)}
-        </ul>
+      <section class="carousel" data-skill-carousel>
+        <h2 id="skills-heading">My digital skills</h2>
+        <p class="carousel-status" data-skill-status aria-live="polite"></p>
+        <div class="carousel-frame">
+          <button class="carousel-nav" type="button" data-skill-prev aria-label="Previous skills">
+            <IconChevronLeft aria-hidden="true" />
+          </button>
+          <div class="carousel-stage" aria-labelledby="skills-heading">
+            {
+              profile.skillGroups.map((group, index) => (
+                <section
+                  class="skill-group"
+                  data-skill-slide
+                  aria-roledescription="slide"
+                  aria-label={`${index + 1} of ${profile.skillGroups.length}`}
+                >
+                  <h3>{group.title}</h3>
+                  <ul class="skills">
+                    {group.items.map((skill) => {
+                      const icon = skillIcon(skill);
+                      return (
+                        <li>
+                          {icon ? (
+                            <svg class="brand" viewBox="0 0 24 24" aria-hidden="true">
+                              <path fill="currentColor" d={icon} />
+                            </svg>
+                          ) : (
+                            <span class="hash" aria-hidden="true">#</span>
+                          )}
+                          {skill}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              ))
+            }
+          </div>
+          <button class="carousel-nav" type="button" data-skill-next aria-label="Next skills">
+            <IconChevronRight aria-hidden="true" />
+          </button>
+        </div>
       </section>
 
       <section>
-        <h2>About</h2>
-        {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+        <h2>About Me</h2>
+        <p class="presentation" style="white-space: pre-line;">{profile.about.text}</p>
+        <ul class="timeline">
+          {profile.about.timeline.map((event) => <li>{event}</li>)}
+        </ul>
       </section>
 
       <section>
@@ -272,5 +315,103 @@ const marks = [
       const cell = event.target instanceof Element ? event.target.closest(".cell[data-label]") : null;
       if (cell) place(cell);
     });
+  }
+
+  const carousel = document.querySelector("[data-skill-carousel]");
+  if (carousel instanceof HTMLElement) {
+    const stage = carousel.querySelector(".carousel-stage");
+    const slides = [...carousel.querySelectorAll("[data-skill-slide]")];
+    const status = carousel.querySelector("[data-skill-status]");
+    const total = slides.length;
+    let active = 0;
+    let swiped = false;
+
+    const offsetOf = (index: number) => {
+      let delta = index - active;
+      if (delta > total / 2) delta -= total;
+      if (delta < -total / 2) delta += total;
+      return delta;
+    };
+
+    const render = () => {
+      carousel.classList.add("is-ready");
+      slides.forEach((slide, index) => {
+        if (!(slide instanceof HTMLElement)) return;
+        const offset = offsetOf(index);
+        slide.dataset.offset = Math.abs(offset) > 1 ? "away" : String(offset);
+        slide.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+      });
+      const current = slides[active];
+      if (stage instanceof HTMLElement) {
+        carousel.classList.add("is-measuring");
+        let tallest = 0;
+        for (const slide of slides) {
+          if (slide instanceof HTMLElement) tallest = Math.max(tallest, slide.offsetHeight);
+        }
+        carousel.classList.remove("is-measuring");
+        stage.style.height = `${tallest}px`;
+      }
+      if (status instanceof HTMLElement && current instanceof HTMLElement) {
+        const title = current.querySelector("h3")?.textContent ?? "";
+        status.textContent = `${title}, ${active + 1} of ${total}`;
+      }
+    };
+
+    const go = (step: number) => {
+      active = (active + step + total) % total;
+      render();
+    };
+
+    carousel.querySelector("[data-skill-prev]")?.addEventListener("click", () => go(-1));
+    carousel.querySelector("[data-skill-next]")?.addEventListener("click", () => go(1));
+
+    slides.forEach((slide, index) => {
+      slide.addEventListener("click", () => {
+        if (swiped) return;
+        const offset = offsetOf(index);
+        if (offset === -1 || offset === 1) go(offset);
+      });
+    });
+
+    if (stage instanceof HTMLElement) {
+      let startX = 0;
+      let startY = 0;
+      let tracking = false;
+      stage.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "mouse" && event.button !== 0) return;
+        tracking = true;
+        swiped = false;
+        startX = event.clientX;
+        startY = event.clientY;
+      });
+      stage.addEventListener("pointerup", (event) => {
+        if (!tracking) return;
+        tracking = false;
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+        swiped = true;
+        go(dx < 0 ? 1 : -1);
+      });
+      stage.addEventListener("pointercancel", () => {
+        tracking = false;
+      });
+    }
+
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        go(-1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        go(1);
+      }
+    });
+
+    render();
+    window.addEventListener("resize", () => render());
+    document.fonts?.ready.then(() => render());
+    requestAnimationFrame(() => carousel.classList.add("is-animated"));
   }
 </script>

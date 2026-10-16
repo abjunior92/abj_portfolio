@@ -11,30 +11,57 @@ test("mostra nome, ruolo e datore di lavoro", async () => {
   const html = await renderIndex();
 
   expect(html).toContain("Andrea Junior Berselli");
-  expect(html).toContain("front-end / mobile developer");
+  expect(html).toContain("Software engineer (Frontend developer)");
   expect(html).toContain('href="https://www.coders51.com/"');
   expect(html).toContain("Coders51");
 });
 
-test("elenca le competenze", async () => {
+test("raggruppa le competenze in sezioni", async () => {
   const html = await renderIndex();
 
+  expect(html).toContain("Languages and frameworks");
+  expect(html).toContain("Previous skills");
+  expect(html).toContain("Next skills");
+  expect(html).toContain('class="hash"');
+  expect(html).toContain('class="brand"');
   for (const skill of [
     "ReactJs",
+    "VueJs",
     "Javascript",
-    "React Native",
+    "Typescript",
     "HTML",
     "CSS",
-    "Objective-C",
+    "TailwindCSS",
+    "Astro",
   ]) {
     expect(html).toContain(skill);
   }
+
+  expect(html).toContain("Interface and accessibility");
+  expect(html).toContain("UI/UX");
+  expect(html).toContain("Accessible development");
+  expect(html).not.toContain("The languages and frameworks behind the interfaces.");
+
+  expect(html).toContain("Repositories");
+  expect(html).toContain("Bitbucket");
+  expect(html).toContain("GitLab");
+
+  expect(html).toContain("Delivery and agile work");
+  expect(html).toContain("CI/CD");
+  expect(html).toContain("Jira");
+  expect(html).toContain("Sprints");
+
+  expect(html).toContain("AI and agents");
+  expect(html).toContain("agents");
 });
 
 test("mostra il percorso e i contatti", async () => {
   const html = await renderIndex();
 
   expect(html).toContain("Bologna, Italy");
+  expect(html).toContain('class="presentation"');
+  expect(html).toContain('class="timeline"');
+  expect(html).toContain("I am a motivated, curious, and passionate person.");
   expect(html).toContain("ITIS Odone Belluzzi");
   expect(html).toContain("Alma Mater Studiorum");
   expect(html).toContain("June 2017");
@@ -48,7 +75,7 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).toContain('href="https://www.facebook.com/BersaX8"');
   expect(html).toContain('href="https://www.instagram.com/bers_abj/?hl=it"');
   expect(html).toContain("Baskin Player");
-  expect(html).toContain("@westriver_asd");
+  expect(html).toContain("westriver_asd");
   expect(html).toContain('href="https://www.instagram.com/westriver_asd/"');
   expect(html).not.toContain("fanta.soccer");
   expect(html).not.toContain("balùswag");
