@@ -607,7 +607,8 @@ html[data-theme="dark"] .theme-switch span.to-light {
 .sheet .presentation {
   margin: 0;
   padding: 1.15rem 1.25rem 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 8px;
   font-size: 1.16rem;
   font-weight: 480;
   line-height: 1.5;
