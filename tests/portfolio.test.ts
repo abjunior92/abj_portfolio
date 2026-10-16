@@ -65,6 +65,10 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).toContain("ITIS Odone Belluzzi");
   expect(html).toContain("Alma Mater Studiorum");
   expect(html).toContain("June 2017");
+  expect(html).toContain("Accessibility is for people");
+  expect(html).toContain('href="https://www.coders51.com/blog/a11y/"');
+  expect(html).toContain("Astro JS - the birth of the coders51 blog");
+  expect(html).toContain('href="https://www.coders51.com/blog/astro-blog/"');
   expect(html).toContain('href="https://github.com/abjunior92"');
   expect(html).toContain("mailto:junior.berselli@gmail.com");
   expect(html).toContain(

@@ -634,6 +634,89 @@ html[data-theme="dark"] .theme-switch span.to-light {
   margin-bottom: 0;
 }
 
+.posts {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheet .posts a {
+  display: grid;
+  grid-template-columns: 6.75rem minmax(0, 1fr);
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  overflow: auto;
+}
+
+.sheet .posts a:hover {
+  border-color: var(--link);
+}
+
+.sheet .posts a:hover h3 {
+  color: var(--link);
+}
+
+.post-still {
+  box-sizing: border-box;
+  display: block;
+  width: 6.75rem;
+  height: 6.75rem;
+  overflow: hidden;
+}
+
+.posts img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet .posts a:hover img {
+  transform: scale(1.06);
+}
+
+.post-copy {
+  display: grid;
+  align-content: center;
+  gap: 0.15rem;
+  padding: 0.7rem 0.95rem 0.75rem 0.9rem;
+}
+
+.posts time {
+  color: var(--quiet);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.posts h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 680;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.sheet .posts p {
+  margin: 0;
+  color: var(--quiet);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 .sheet footer {
   margin-top: 2.1rem;
 }
@@ -697,6 +780,19 @@ html[data-theme="dark"] .theme-switch span.to-light {
     gap: 0.4rem;
   }
 
+  .sheet .posts a {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .post-still {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .post-copy {
+    padding: 0.6rem 0.75rem 0.65rem 0.7rem;
+  }
+
   .contacts a {
     justify-content: center;
     width: 2.75rem;
@@ -720,7 +816,12 @@ html[data-theme="dark"] .theme-switch span.to-light {
     animation: none;
   }
 
-  .carousel.is-animated .skill-group {
+  .carousel.is-animated .skill-group,
+  .posts img {
     transition: none;
+  }
+
+  .sheet .posts a:hover img {
+    transform: none;
   }
 }

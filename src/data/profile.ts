@@ -71,6 +71,24 @@ export const profile = {
       "2019 - today I started working as a software engineer at Coders51.",
     ],
   },
+  posts: [
+    {
+      title: "Accessibility is for people",
+      date: "2026-03-13",
+      author: "Andrea Junior Berselli",
+      description: "Accessibility in web projects is not about others — it's about everyone",
+      image: "https://www.coders51.com/posts/a11y/hero.png",
+      url: "https://www.coders51.com/blog/a11y/",
+    },
+    {
+      title: "Astro JS - the birth of the coders51 blog",
+      date: "2024-03-25",
+      author: "Andrea Junior Berselli",
+      description: "Our company needed a blog, what better opportunity to experiment with Astro? Let's see how it was made and why we chose this SSG",
+      image: "https://www.coders51.com/posts/astro-blog/hero.webp",
+      url: "https://www.coders51.com/blog/astro-blog/",
+    },
+  ],
   contacts: [
     {
       title: "Email",
