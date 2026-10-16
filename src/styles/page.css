@@ -782,11 +782,21 @@ html[data-theme="dark"] .theme-switch span.to-light {
 
   .sheet .posts a {
     grid-template-columns: 5.5rem minmax(0, 1fr);
+    align-items: stretch;
   }
 
   .post-still {
-    width: 5.5rem;
-    height: 5.5rem;
+    position: relative;
+    width: auto;
+    height: auto;
+    align-self: stretch;
+  }
+
+  .posts img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .post-copy {
