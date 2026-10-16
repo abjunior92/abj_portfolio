@@ -12,8 +12,10 @@ import {
   IconCode,
   IconMail,
   IconMapPin,
+  IconMenu2,
   IconMoon,
-  IconSun
+  IconSun,
+  IconX
 } from "@tabler/icons-astro";
 import Layout from "../layouts/Layout.astro";
 import { loadGithubActivity, toWeekColumns } from "../data/github";
@@ -128,13 +130,30 @@ const marks = [
     }
   </div>
 
+  <nav class="site-nav" aria-label="On this page" data-page-nav>
+    <div class="nav-bar">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="section-menu" data-nav-toggle>
+        <IconMenu2 class="nav-closed" aria-hidden="true" />
+        <IconX class="nav-open" aria-hidden="true" />
+        <span class="nav-closed">Menu</span>
+        <span class="nav-open">Close menu</span>
+      </button>
+      <button class="theme-switch" type="button" data-theme-toggle>
+        <IconMoon class="to-dark" aria-hidden="true" />
+        <span class="to-dark">Switch to dark theme</span>
+        <IconSun class="to-light" aria-hidden="true" />
+        <span class="to-light">Switch to light theme</span>
+      </button>
+    </div>
+    <ul id="section-menu">
+      <li><a href="#skills-heading">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      {profile.posts.length > 0 && <li><a href="#blog">Blog</a></li>}
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <article class="sheet">
-    <button class="theme-switch" type="button" data-theme-toggle>
-      <IconMoon class="to-dark" aria-hidden="true" />
-      <span class="to-dark">Switch to dark theme</span>
-      <IconSun class="to-light" aria-hidden="true" />
-      <span class="to-light">Switch to light theme</span>
-    </button>
     <header>
       <h1>{profile.name}</h1>
       <ul class="identity">
@@ -210,7 +229,7 @@ const marks = [
 
     <main>
       <section class="carousel" data-skill-carousel>
-        <h2 id="skills-heading">My digital skills</h2>
+        <h2 id="skills-heading" tabindex="-1">My digital skills</h2>
         <p class="carousel-status" data-skill-status aria-live="polite"></p>
         <div class="carousel-frame">
           <button class="carousel-nav" type="button" data-skill-prev aria-label="Previous skills">
@@ -254,7 +273,7 @@ const marks = [
       </section>
 
       <section>
-        <h2>About Me</h2>
+        <h2 id="about" tabindex="-1">About Me</h2>
         <p class="presentation" style="white-space: pre-line;">{profile.about.text}</p>
         <ul class="timeline">
           {profile.about.timeline.map((event) => <li>{event}</li>)}
@@ -264,7 +283,7 @@ const marks = [
       {
         profile.posts.length > 0 && (
           <section>
-            <h2>Blog</h2>
+            <h2 id="blog" tabindex="-1">Blog</h2>
             <ul class="posts">
               {profile.posts.map((post) => (
                 <li>
@@ -293,7 +312,7 @@ const marks = [
       }
 
       <section>
-        <h2>Contact</h2>
+        <h2 id="contact" tabindex="-1">Contact</h2>
         <ul class="contacts">
           {
             profile.contacts.map((contact) => {
@@ -454,5 +473,56 @@ const marks = [
     window.addEventListener("resize", () => render());
     document.fonts?.ready.then(() => render());
     requestAnimationFrame(() => carousel.classList.add("is-animated"));
+  }
+
+  const pageNav = document.querySelector("[data-page-nav]");
+  const navToggle = pageNav?.querySelector("[data-nav-toggle]");
+  const sectionMenu = pageNav?.querySelector("#section-menu");
+  const navMobile = matchMedia("(max-width: 720px)");
+
+  if (pageNav instanceof HTMLElement && navToggle instanceof HTMLButtonElement) {
+    const closeNav = (returnFocus: boolean) => {
+      pageNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      if (returnFocus) navToggle.focus();
+    };
+
+    navToggle.addEventListener("click", () => {
+      const willOpen = navToggle.getAttribute("aria-expanded") !== "true";
+      pageNav.classList.toggle("is-open", willOpen);
+      navToggle.setAttribute("aria-expanded", String(willOpen));
+      if (willOpen) {
+        const first = sectionMenu?.querySelector("a");
+        if (first instanceof HTMLElement) first.focus();
+      }
+    });
+
+    sectionMenu?.addEventListener("click", (event) => {
+      const link = event.target instanceof Element ? event.target.closest("a") : null;
+      if (!(link instanceof HTMLAnchorElement)) return;
+      const id = link.getAttribute("href")?.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      if (!(target instanceof HTMLElement)) return;
+      event.preventDefault();
+      closeNav(false);
+      history.pushState(null, "", link.hash);
+      target.scrollIntoView();
+      target.focus({ preventScroll: true });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && pageNav.classList.contains("is-open")) {
+        event.preventDefault();
+        closeNav(true);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!pageNav.classList.contains("is-open")) return;
+      if (event.target instanceof Node && pageNav.contains(event.target)) return;
+      closeNav(false);
+    });
+
+    navMobile.addEventListener("change", () => closeNav(false));
   }
 </script>

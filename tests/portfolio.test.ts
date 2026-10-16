@@ -62,6 +62,13 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).toContain('class="presentation"');
   expect(html).toContain('class="timeline"');
   expect(html).toContain("I am a motivated, curious, and passionate person.");
+  expect(html).toContain('href="#skills-heading"');
+  expect(html).toContain(">Skills<");
+  expect(html).toContain('href="#about"');
+  expect(html).toContain('href="#blog"');
+  expect(html).toContain('href="#contact"');
+  expect(html).toContain("Menu");
+  expect(html).toContain("Close menu");
   expect(html).toContain("ITIS Odone Belluzzi");
   expect(html).toContain("Alma Mater Studiorum");
   expect(html).toContain("June 2017");
