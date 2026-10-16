@@ -17,6 +17,20 @@ const analyticsId = process.env.GOOGLE_ANALYTICS_ID;
 
 <html lang="en">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch (error) {}
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
@@ -68,5 +82,43 @@ const analyticsId = process.env.GOOGLE_ANALYTICS_ID;
     FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
     -->
     <slot />
+    <script>
+      import { resolveTheme } from "../data/theme";
+
+      const storageKey = "theme";
+      const root = document.documentElement;
+      const media = matchMedia("(prefers-color-scheme: dark)");
+      const toggle = document.querySelector("[data-theme-toggle]");
+
+      function readStored() {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch {
+          return null;
+        }
+      }
+
+      function apply(theme: "light" | "dark") {
+        root.dataset.theme = theme;
+      }
+
+      apply(resolveTheme(readStored(), media.matches));
+
+      media.addEventListener("change", () => {
+        const stored = readStored();
+        if (stored === "light" || stored === "dark") return;
+        apply(resolveTheme(null, media.matches));
+      });
+
+      toggle?.addEventListener("click", () => {
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        try {
+          localStorage.setItem(storageKey, next);
+        } catch {
+          /* la scelta resta valida per questa visita */
+        }
+        apply(next);
+      });
+    </script>
   </body>
 </html>

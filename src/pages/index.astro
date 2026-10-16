@@ -1,4 +1,18 @@
 ---
+import {
+  IconBallBasketball,
+  IconBrandFacebook,
+  IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandTelegram,
+  IconBrandWhatsapp,
+  IconCode,
+  IconMail,
+  IconMapPin,
+  IconMoon,
+  IconSun
+} from "@tabler/icons-astro";
 import Layout from "../layouts/Layout.astro";
 import { loadGithubActivity, toWeekColumns } from "../data/github";
 import { profile } from "../data/profile";
@@ -44,6 +58,15 @@ function formatMonth(iso: string) {
     timeZone: "UTC"
   });
 }
+
+const contactIcons = {
+  Email: IconMail,
+  LinkedIn: IconBrandLinkedin,
+  WhatsApp: IconBrandWhatsapp,
+  Telegram: IconBrandTelegram,
+  Facebook: IconBrandFacebook,
+  Instagram: IconBrandInstagram
+} as const;
 
 const marks = [
   { kind: "cross", x: "6%", y: "8%", s: "2.4rem", d: "28s", delay: "-4s" },
@@ -93,33 +116,28 @@ const marks = [
   </div>
 
   <article class="sheet">
+    <button class="theme-switch" type="button" data-theme-toggle>
+      <IconMoon class="to-dark" aria-hidden="true" />
+      <span class="to-dark">Switch to dark theme</span>
+      <IconSun class="to-light" aria-hidden="true" />
+      <span class="to-light">Switch to light theme</span>
+    </button>
     <header>
       <h1>{profile.name}</h1>
       <ul class="identity">
         <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8.2 7.2 4.4 12l3.8 4.8" />
-            <path d="M15.8 7.2 19.6 12l-3.8 4.8" />
-          </svg>
+          <IconCode aria-hidden="true" />
           <span>
             {profile.role} @
             <a href={profile.job.url} rel="noopener noreferrer">{profile.job.name}</a>
           </span>
         </li>
         <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 21.2s5.4-4.9 5.4-9.1a5.4 5.4 0 1 0-10.8 0c0 4.2 5.4 9.1 5.4 9.1z" />
-            <circle cx="12" cy="12" r="1.7" />
-          </svg>
+          <IconMapPin aria-hidden="true" />
           <span>{profile.location}</span>
         </li>
         <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="8.25" />
-            <path d="M12 3.75v16.5M3.75 12h16.5" />
-            <path d="M7.3 5.2Q9.7 12 7.3 18.8" />
-            <path d="M16.7 5.2Q14.3 12 16.7 18.8" />
-          </svg>
+          <IconBallBasketball aria-hidden="true" />
           <span>
             {profile.baskin.label}{" "}
             <a href={profile.baskin.url} rel="noopener noreferrer">{profile.baskin.handle}</a>
@@ -130,9 +148,7 @@ const marks = [
       <section class="github" aria-label="GitHub">
         <p class="github-row">
           <a class="github-link" href={profile.github.url} rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 .3C5.37.3 0 5.67 0 12.3c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.28-1.55 3.3-1.23 3.3-1.23.64 1.66.23 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.21.69.82.57A12.02 12.02 0 0 0 24 12.3C24 5.67 18.63.3 12 .3z" />
-            </svg>
+            <IconBrandGithub aria-hidden="true" />
             <span>{profile.github.label}</span>
           </a>
         </p>
@@ -196,36 +212,17 @@ const marks = [
         <h2>Contact</h2>
         <ul class="contacts">
           {
-            profile.contacts.map((contact) => (
-              <li>
-                <a href={contact.href} rel="noopener noreferrer">
-                  <svg class={contact.title === "Email" ? "line" : undefined} viewBox="0 0 24 24" aria-hidden="true">
-                    {contact.title === "Email" && (
-                      <path d="M3.2 6.2h17.6v11.6H3.2V6.2zm.4.8 8.4 6.2 8.4-6.2" />
-                    )}
-                    {contact.title === "LinkedIn" && (
-                      <path d="M4.7 9.1H8v11.4H4.7V9.1zM6.35 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10.1 9.1h3.2v1.6h.05c.44-.84 1.53-1.72 3.15-1.72 3.37 0 4 2.22 4 5.1v6.42h-3.3v-5.7c0-1.36-.02-3.1-1.89-3.1-1.9 0-2.18 1.48-2.18 3v5.8H10.1V9.1z" />
-                    )}
-                    {contact.title === "WhatsApp" && (
-                      <path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10 10 0 0 0 4.65 1.16h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2zm5.76 14.15c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.81-.11-.41-.14-.95-.31-1.63-.61-2.87-1.24-4.74-4.13-4.88-4.32-.14-.19-1.16-1.54-1.16-2.94s.73-2.08 1-2.37c.24-.28.64-.41 1.02-.41.13 0 .24 0 .35.01.31.01.47.02.68.52.24.58.82 2 .89 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.41.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.19-.27.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.46.21.53.33.07.12.07.68-.17 1.36z" />
-                    )}
-                    {contact.title === "Telegram" && (
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.62 7.64c-.12.54-.44.68-.9.42l-2.48-1.83-1.2 1.15c-.13.13-.24.24-.5.24l.18-2.52 4.58-4.14c.2-.18-.04-.28-.31-.1l-5.66 3.56-2.44-.76c-.53-.16-.54-.53.11-.79l9.54-3.68c.44-.16.83.1.7.81z" />
-                    )}
-                    {contact.title === "Facebook" && (
-                      <path d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5.02 3.66 9.18 8.44 9.94v-7.03H8.08v-2.91h2.36V9.85c0-2.34 1.4-3.63 3.52-3.63 1.02 0 2.09.18 2.09.18v2.3h-1.18c-1.16 0-1.52.72-1.52 1.46v1.76h2.59l-.41 2.91h-2.18v7.03C18.34 21.25 22 17.09 22 12.07z" />
-                    )}
-                    {contact.title === "Instagram" && (
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.16c2.7 0 3.02.01 4.08.06 2.78.13 4.08 1.45 4.2 4.2.05 1.06.06 1.38.06 4.08s-.01 3.02-.06 4.08c-.12 2.75-1.42 4.07-4.2 4.2-1.06.05-1.38.06-4.08.06s-3.02-.01-4.08-.06c-2.78-.13-4.08-1.45-4.2-4.2-.05-1.06-.06-1.38-.06-4.08s.01-3.02.06-4.08c.12-2.75 1.42-4.07 4.2-4.2 1.06-.05 1.38-.06 4.08-.06zm0 1.94c-2.66 0-2.97.01-4.02.06-1.98.09-2.9.82-2.99 2.99-.05 1.05-.06 1.36-.06 4.02s.01 2.97.06 4.02c.09 2.16 1.01 2.89 2.99 2.99 1.05.05 1.36.06 4.02.06s2.97-.01 4.02-.06c1.98-.1 2.9-.83 2.99-2.99.05-1.05.06-1.36.06-4.02s-.01-2.97-.06-4.02c-.09-2.17-1.01-2.9-2.99-2.99-1.05-.05-1.36-.06-4.02-.06zM12 7.38a4.62 4.62 0 1 1 0 9.24 4.62 4.62 0 0 1 0-9.24zm0 1.94a2.68 2.68 0 1 0 0 5.36 2.68 2.68 0 0 0 0-5.36zm4.81-2.02a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z"
-                      />
-                    )}
-                  </svg>
-                  <span class="contact-label">{contact.title}</span>
-                </a>
-              </li>
-            ))
+            profile.contacts.map((contact) => {
+              const Icon = contactIcons[contact.title];
+              return (
+                <li>
+                  <a href={contact.href} rel="noopener noreferrer">
+                    <Icon aria-hidden="true" />
+                    <span class="contact-label">{contact.title}</span>
+                  </a>
+                </li>
+              );
+            })
           }
         </ul>
       </section>

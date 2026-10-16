@@ -54,6 +54,14 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).not.toContain("balùswag");
 });
 
+test("offre il passaggio tra tema chiaro e scuro", async () => {
+  const html = await renderIndex();
+
+  expect(html).toContain('type="button"');
+  expect(html).toContain("Switch to dark theme");
+  expect(html).toContain("Switch to light theme");
+});
+
 test("pubblica i metadati SEO del sito", async () => {
   const html = await renderIndex();
 
