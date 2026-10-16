@@ -1,30 +1,16 @@
-<h1 align="center">
-  My Personal Portfolio
-</h1>
+# Portfolio
 
-## 🧑🏻‍💻 Hi!
+Sito statico del portfolio, generato con Astro e pubblicato su Netlify.
 
-My name is Andrea Junior Berselli, i'm a front end dev. With this project I've tried to build my first portfolio in order to use in the future as my personal CV.
+## Comandi
 
-## ✨ Technologies
+```sh
+npm install
+npm run dev
+npm test
+npm run build
+```
 
-- React
-- Javascript
-- Gatsby
-- GraphQL
-- Netlify
+`npm run build` scrive il sito in `dist`. Su Netlify il comando di build è `npm run build` e la cartella pubblicata è `dist`.
 
-## 🚀 Why Gatsby
-
-I've tried for the first time the Gatsby world and it's themes. Gatsby it's great for PWA and is optimized to be highly performant. It makes use of the latest and popular technologies including ReactJS, Webpack, GraphQL, modern ES6+ JavaScript and CSS.
-
-1. **Plugins**
-   Gatsby is very flexible and plugins is only one way to make it so. With some of these you can make the site offline, add Google analytics, manipulate images and fetch data from a local or remote source (via GraphQL for ex).
-
-2. **Starters**
-   For a static site, in my case a Portfolio, the great thing is to have a list of boilerplate Gatsby sites which help you to start to development quickly.
-
-3. **How it works**
-   Unlike the SPAs that make API requests as you run the app, Gatsby does all data fetching during build time. Then it use all this data to generate HTML, JS and CSS files. Boom, faster than you can think.
-
-Secure: Gatsby only takes the required data to display.
+Gli stili si aggiungono con le classi di Tailwind. Il foglio `src/styles/global.css` è già importato dal layout.

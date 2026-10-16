@@ -2,35 +2,22 @@
   "private": true,
   "name": "portfolio",
   "description": "My Personal Portfolio",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "author": "abjunior92",
   "license": "0BSD",
-  "starter-name": "abj-portfolio",
+  "type": "module",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
-    "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@emotion/react": "^11.4.0",
-    "@lekoarts/gatsby-theme-cara": "^1.2.18",
-    "@mdx-js/mdx": "^1.6.22",
-    "@react-spring/parallax": "^9.2.3",
-    "gatsby": "^2.25.3",
-    "gatsby-plugin-gatsby-cloud": "^1.0.1",
-    "gatsby-plugin-google-analytics": "^2.4.1",
-    "gatsby-plugin-manifest": "^2.12.1",
-    "gatsby-plugin-netlify": "^2.4.0",
-    "gatsby-plugin-offline": "^3.3.3",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.13",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "vitest": "^5.0.5"
   }
 }

@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const site = "https://abjportfolio.netlify.app";
+const canonical = new URL(Astro.url.pathname, site).href;
+const image = new URL("/presentation.png", site).href;
+const analyticsId = process.env.GOOGLE_ANALYTICS_ID;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Andrea Junior Berselli" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/rick_sanchez_avatar.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta
+      name="google-site-verification"
+      content="uKWb6x3jOGOyfwL9_P4sHu6sUXsMW5vpX6KmNEOWWSs"
+    />
+    {
+      analyticsId && (
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+        />
+      )
+    }
+    {
+      analyticsId && (
+        <script is:inline define:vars={{ analyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", analyticsId);
+        </script>
+      )
+    }
+  </head>
+  <body class="bg-white text-neutral-900">
+    <slot />
+  </body>
+</html>

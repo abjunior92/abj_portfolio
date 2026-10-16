@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { profile } from "../data/profile";
+
+const year = new Date().getFullYear();
+---
+
+<Layout title="Abj - Portfolio" description="My Personal Portfolio">
+  <header>
+    <p>Portfolio</p>
+    <h1>{profile.name}</h1>
+    <p>
+      {profile.role} @
+      <a href={profile.job.url} rel="noopener noreferrer">{profile.job.name}</a>
+    </p>
+    <p>
+      <a href={profile.github.url} rel="noopener noreferrer">{profile.github.label}</a>
+    </p>
+    <p>{profile.location}</p>
+    <p>
+      <a href={profile.dog.url} rel="noopener noreferrer">{profile.dog.label}</a>
+    </p>
+    <p>
+      Writer @
+      {
+        profile.writing.map((item, index) => (
+          <>
+            {index > 0 && " / "}
+            <a href={item.url} rel="noopener noreferrer">
+              {item.name}
+            </a>
+          </>
+        ))
+      }
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>My digital skills</h2>
+      <ul>
+        {profile.skills.map((skill) => <li>{skill}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>About</h2>
+      {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <ul>
+        {
+          profile.contacts.map((contact) => (
+            <li>
+              <a href={contact.href} rel="noopener noreferrer">
+                {contact.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright © {year}. All rights reserved.</p>
+    <p>Developed by {profile.name}</p>
+  </footer>
+</Layout>
