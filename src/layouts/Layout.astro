@@ -1,5 +1,7 @@
 ---
+import "@fontsource-variable/familjen-grotesk/wght.css";
 import "../styles/global.css";
+import "../styles/page.css";
 
 interface Props {
   title: string;
@@ -56,7 +58,15 @@ const analyticsId = process.env.GOOGLE_ANALYTICS_ID;
       )
     }
   </head>
-  <body class="bg-white text-neutral-900">
+  <body>
+    <!--
+    THESIS: A centered curriculum on paper, with PlayStation button marks turning slowly behind it. The ink basin is gone.
+    OWN-WORLD: Paper #f7f4ee, carbon text #141414, Familjen Grotesk. Outlined marks only: cross #0072ce, square #e04b8a, circle #e10600, triangle #00a34a.
+    STORY: A recruiter and a peer read the real facts in one column and reach contact without searching. The marks stay quiet enough that the words win.
+    FIRST VIEWPORT: The name leads a centered column. Marks sit fixed in the background, mostly toward the edges, each rotating in place.
+    FORM: Classic single column with a background field of controller glyphs.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
     <slot />
   </body>
 </html>

@@ -47,11 +47,11 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).toContain('href="http://telegram.me/bersax"');
   expect(html).toContain('href="https://www.facebook.com/BersaX8"');
   expect(html).toContain('href="https://www.instagram.com/bers_abj/?hl=it"');
-  expect(html).toContain('href="https://www.fanta.soccer/it/"');
-  expect(html).toContain(
-    "https://www.instagram.com/consiglifantacalcioofficial/?hl=it",
-  );
-  expect(html).toContain("http://instagram.com/tags/balùswag");
+  expect(html).toContain("Baskin Player");
+  expect(html).toContain("@westriver_asd");
+  expect(html).toContain('href="https://www.instagram.com/westriver_asd/"');
+  expect(html).not.toContain("fanta.soccer");
+  expect(html).not.toContain("balùswag");
 });
 
 test("pubblica i metadati SEO del sito", async () => {

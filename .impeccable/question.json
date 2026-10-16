@@ -1,0 +1,74 @@
+{
+  "title": "La grafica del portfolio",
+  "question": "Un foglio semplice, carta chiara e inchiostro, con quadrati, triangoli, cerchi, croci e joystick sparsi. Nessun marchio Sony. Tieni questa, scegline un'altra, o rimescola.",
+  "reroll": true,
+  "canon": true,
+  "steer": true,
+  "options": [
+    {
+      "id": "foglio",
+      "label": "Foglio e tasti",
+      "kicker": "La pagina semplice",
+      "lineage": "Curriculum corto su carta, segni di controller sparsi come sul tavolo",
+      "thesis": "La struttura resta quella di un curriculum breve: nome, ruolo, skill, studi, contatti. La carta è chiara, l'inchiostro è nero, un solo blu segna i link. I tasti e i joystick sono segni in inchiostro, sparsi e un po' storti, non una plancia e non un logo.",
+      "palette": ["#f4f1ea", "#141414", "#2f6fed"],
+      "materials": ["carta chiara", "inchiostro", "un solo accento", "segni geometrici", "joystick piccoli"],
+      "viewport": "Nome grande, ruolo subito sotto, pochi segni nei margini e tra i blocchi. Skill in lista corta, studi compatti, contatti in fondo sempre visibili. La pagina si legge quasi in un solo schermo.",
+      "case": "Parte semplice come chiesto, tiene la palette del provino e riconosce il controller senza i quattro colori ufficiali, che avrebbero rotto l'unico accento.",
+      "risk": "Se i segni diventano troppi, il foglio sembra una skin da fan e il curriculum sparisce.",
+      "sketch": ".impeccable/sketches/foglio.png"
+    },
+    {
+      "id": "ink",
+      "label": "Inchiostro che si muove",
+      "kicker": "Alternativa",
+      "lineage": "Bacinella di inchiostro, i segni galleggiano accanto alla colonna",
+      "thesis": "Stessa carta e stesso inchiostro. Il curriculum sta in una colonna ferma; a lato una superficie d'inchiostro dove i tasti vanno alla deriva.",
+      "palette": ["#f7f4ee", "#141414", "#1d3f73"],
+      "materials": ["carta", "inchiostro che si allarga", "margine fermo"],
+      "viewport": "Colonna di testo a sinistra con nome e ruolo. A destra una macchia d'inchiostro con pochi segni geometrici. Contatti in fondo alla colonna.",
+      "case": "Più vivo, e resta nel bianco e nero. Perde la pagina semplice: il fluido diventa lo spettacolo e il curriculum il margine.",
+      "risk": "Il movimento ruba la lettura, e la pagina smette di essere corta.",
+      "sketch": ".impeccable/sketches/ink.png"
+    },
+    {
+      "id": "elbow",
+      "label": "Plancia a gomiti",
+      "kicker": "Alternativa",
+      "lineage": "Pannello da console, blocchi pastello su nero e cornici a gomito",
+      "thesis": "Il curriculum sta in blocchi piatti, lilla, pesca e oro, su nero. Ogni blocco è un tasto, la cornice a gomito è la griglia.",
+      "palette": ["#0c0c0c", "#c7b7e2", "#f0b48a", "#e2c15a", "#a9b4e8"],
+      "materials": ["vetro nero", "blocchi piatti", "cornici a gomito"],
+      "viewport": "Schermo nero, il nome dentro un blocco lilla, ruolo e skill in segmenti affiancati, contatti in una riga di pillole.",
+      "case": "Si fonde male con quello che hai appena chiesto: è una plancia scura e colorata, non un foglio chiaro e semplice.",
+      "risk": "Torna il cruscotto, solo più acceso, e i pochi colori saltano.",
+      "sketch": ".impeccable/sketches/elbow.png"
+    },
+    {
+      "id": "mark",
+      "label": "Un solo segno",
+      "kicker": "Alternativa",
+      "lineage": "Un marchio geometrico solo, il foglio sotto resta fermo",
+      "thesis": "Il curriculum è il foglio semplice. I quattro tasti non sono sparsi: sono un solo segno, composto una volta, accanto al nome.",
+      "palette": ["#f4f1ea", "#141414", "#2f6fed"],
+      "materials": ["carta chiara", "inchiostro", "un marchio solo"],
+      "viewport": "Nome e un piccolo segno composto dai quattro tasti. Sotto, il curriculum in una colonna pulita, quasi senza altri disegni.",
+      "case": "Più ordinato e più da studio. Perde i segni sparsi e i joystick sul tavolo.",
+      "risk": "Sembra un logo di studio, non il mondo di un controller.",
+      "sketch": ".impeccable/sketches/mark.png"
+    }
+  ],
+  "canonCard": {
+    "id": "canon",
+    "label": "Portfolio dritto",
+    "kicker": "La via comune",
+    "lineage": "Curriculum da sviluppatore come lo spediscono quasi tutti",
+    "thesis": "Nome grande, ruolo sotto, skill in fila, biografia, contatti. Nessun segno, nessun controller.",
+    "palette": ["#f7f7f5", "#1a1a1a", "#5c6b73"],
+    "materials": ["fondo chiaro", "testo nero", "pillole neutre"],
+    "viewport": "Intestazione con nome e ruolo, una riga di skill, i paragrafi, una riga di link.",
+    "case": "È la porta d'uscita. Ha la semplicità, non ha il controller.",
+    "risk": "Il visitatore non pensa al mondo dei videogiochi.",
+    "sketch": ".impeccable/sketches/canon.png"
+  }
+}
