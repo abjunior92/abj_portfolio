@@ -15,7 +15,9 @@ html {
   --tip-ink: #f7f4ee;
   --mark-opacity: 0.42;
   --wash: 12%;
-  --wash-soft: 8%;
+  --wash-soft: 14%;
+  --arc-bl-size: 62vmax;
+  --arc-bl-at: -6% 106%;
   --grain: 0.26;
   --grain-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --quiet: color-mix(in srgb, var(--ink) 76%, var(--paper));
@@ -38,6 +40,8 @@ html[data-theme="dark"] {
   --mark-opacity: 0.34;
   --wash: 7%;
   --wash-soft: 5%;
+  --arc-bl-size: 62vmax;
+  --arc-bl-at: -10% 110%;
   --grain: 0.16;
 }
 
@@ -58,6 +62,8 @@ html[data-theme="dark"] {
     --mark-opacity: 0.34;
     --wash: 7%;
     --wash-soft: 5%;
+    --arc-bl-size: 62vmax;
+    --arc-bl-at: -10% 110%;
     --grain: 0.16;
   }
 }
@@ -88,7 +94,7 @@ body::before {
       transparent 72%
     ),
     radial-gradient(
-      62vmax 62vmax at -10% 110%,
+      var(--arc-bl-size) var(--arc-bl-size) at var(--arc-bl-at),
       transparent 30%,
       color-mix(in srgb, var(--ink) var(--wash-soft), transparent) 52%,
       transparent 74%
@@ -879,6 +885,16 @@ html[data-theme="dark"] .theme-switch span.to-light {
 }
 
 @media (max-width: 720px) {
+  html {
+    --arc-bl-size: 48vmax;
+    --arc-bl-at: -8% 108%;
+  }
+
+  html[data-theme="dark"] {
+    --arc-bl-size: 38vmax;
+    --arc-bl-at: -16% 114%;
+  }
+
   body::before {
     background:
       radial-gradient(
@@ -888,7 +904,7 @@ html[data-theme="dark"] .theme-switch span.to-light {
         transparent 72%
       ),
       radial-gradient(
-        38vmax 38vmax at -16% 114%,
+        var(--arc-bl-size) var(--arc-bl-size) at var(--arc-bl-at),
         transparent 28%,
         color-mix(in srgb, var(--ink) var(--wash-soft), transparent) 52%,
         transparent 74%
