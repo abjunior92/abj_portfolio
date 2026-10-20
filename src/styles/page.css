@@ -593,7 +593,9 @@ html[data-theme="dark"] .theme-switch span.to-light {
 }
 
 .carousel.is-ready .skill-group[data-offset="0"] {
+  top: 50%;
   z-index: 2;
+  transform: translate(-50%, -50%);
   cursor: default;
   filter: none;
   opacity: 1;
@@ -601,8 +603,9 @@ html[data-theme="dark"] .theme-switch span.to-light {
 
 .carousel.is-ready .skill-group[data-offset="-1"],
 .carousel.is-ready .skill-group[data-offset="1"] {
+  top: 50%;
   width: var(--peek-width);
-  transform: none;
+  transform: translateY(-50%);
   z-index: 1;
   filter: blur(1.6px);
   opacity: 0.92;
@@ -614,6 +617,7 @@ html[data-theme="dark"] .theme-switch span.to-light {
 
 .carousel.is-ready .skill-group[data-offset="-1"] h3,
 .carousel.is-ready .skill-group[data-offset="1"] h3 {
+  margin-bottom: 0;
   font-size: 0.95rem;
 }
 
@@ -625,11 +629,6 @@ html[data-theme="dark"] .theme-switch span.to-light {
 .carousel.is-ready .skill-group[data-offset="1"] {
   left: auto;
   right: 0;
-  width: var(--peek-width);
-  transform: none;
-  z-index: 1;
-  filter: blur(1.6px);
-  opacity: 0.92;
 }
 
 .carousel.is-ready.is-measuring .skill-group[data-offset] {
@@ -641,6 +640,7 @@ html[data-theme="dark"] .theme-switch span.to-light {
 }
 
 .carousel.is-ready.is-measuring .skill-group[data-offset] h3 {
+  margin-bottom: 0.55rem;
   font-size: 1.28rem;
 }
 
