@@ -33,7 +33,7 @@ export const profile = {
     {
       title: "Interface and accessibility",
       text: "UI and UX, with attention to accessible development.",
-      items: ["UI/UX", "Accessible development"],
+      items: ["UI/UX", "Accessible development", "Figma"],
     },
     {
       title: "Repositories",
@@ -46,14 +46,14 @@ export const profile = {
       items: ["CI/CD", "Agile", "Jira", "Sprints"],
     },
     {
-      title: "AI and agents",
-      text: "Using AI and agents to develop code and features.",
-      items: ["AI", "Agents"],
+      title: "AI, agents and skills",
+      text: "Using AI agents and skills to develop code and features.",
+      items: ["OpenAI", "Claude", "Cursor", "GitHub Copilot"],
     },
     {
       title: "Tools",
       text: "Tools for development.",
-      items: ["Git", "Docker"],
+      items: ["Git", "Docker", "Miro"],
     },
     {
       title: "Databases",
@@ -76,7 +76,8 @@ export const profile = {
       title: "Accessibility is for people",
       date: "2026-03-13",
       author: "Andrea Junior Berselli",
-      description: "Accessibility in web projects is not about others — it's about everyone",
+      description:
+        "Accessibility in web projects is not about others — it's about everyone",
       image: "https://www.coders51.com/posts/a11y/hero.png",
       url: "https://www.coders51.com/blog/a11y/",
     },
@@ -84,7 +85,8 @@ export const profile = {
       title: "Astro JS - the birth of the coders51 blog",
       date: "2024-03-25",
       author: "Andrea Junior Berselli",
-      description: "Our company needed a blog, what better opportunity to experiment with Astro? Let's see how it was made and why we chose this SSG",
+      description:
+        "Our company needed a blog, what better opportunity to experiment with Astro? Let's see how it was made and why we chose this SSG",
       image: "https://www.coders51.com/posts/astro-blog/hero.webp",
       url: "https://www.coders51.com/blog/astro-blog/",
     },
