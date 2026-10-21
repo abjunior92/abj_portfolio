@@ -92,6 +92,27 @@ test("mostra il percorso e i contatti", async () => {
   expect(html).not.toContain("balùswag");
 });
 
+test("mostra i progetti sotto About Me", async () => {
+  const html = await renderIndex();
+  const about = html.indexOf('id="about"');
+  const projects = html.indexOf('id="projects"');
+  const blog = html.indexOf('id="blog"');
+
+  expect(about).toBeGreaterThan(-1);
+  expect(projects).toBeGreaterThan(about);
+  expect(blog).toBeGreaterThan(projects);
+  expect(html).toContain('href="#projects"');
+  expect(html).toContain(">Projects<");
+  expect(html).toContain("Longara Tournament Board");
+  expect(html).toContain(
+    "A management platform for the Longara 3vs3 basketball tournament: an admin panel and a view for guests and players. A board that shows the general information, notices, sponsors, food, and more. A way to make a basketball tournament even more engaging for young people, giving participants statistics, standings, and much more.",
+  );
+  expect(html).toContain('src="/logo-longara.jpg"');
+  expect(html).toContain(
+    'href="https://basket-playground.fly.dev/playground/showcase"',
+  );
+});
+
 test("offre il passaggio tra tema chiaro e scuro", async () => {
   const html = await renderIndex();
 

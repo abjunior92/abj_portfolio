@@ -71,6 +71,15 @@ export const profile = {
       "2019 - today I started working as a software engineer at Coders51.",
     ],
   },
+  projects: [
+    {
+      title: "Longara Tournament Board",
+      description:
+        "A management platform for the Longara 3vs3 basketball tournament: an admin panel and a view for guests and players. A board that shows the general information, notices, sponsors, food, and more. A way to make a basketball tournament even more engaging for young people, giving participants statistics, standings, and much more.",
+      image: "/logo-longara.jpg",
+      url: "https://basket-playground.fly.dev/playground/showcase",
+    },
+  ],
   posts: [
     {
       title: "Accessibility is for people",

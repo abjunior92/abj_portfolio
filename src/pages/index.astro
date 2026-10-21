@@ -148,6 +148,7 @@ const marks = [
     <ul id="section-menu">
       <li><a href="#skills-heading">Skills</a></li>
       <li><a href="#about">About</a></li>
+      {profile.projects.length > 0 && <li><a href="#projects">Projects</a></li>}
       {profile.posts.length > 0 && <li><a href="#blog">Blog</a></li>}
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -279,6 +280,36 @@ const marks = [
           {profile.about.timeline.map((event) => <li>{event}</li>)}
         </ul>
       </section>
+
+      {
+        profile.projects.length > 0 && (
+          <section>
+            <h2 id="projects" tabindex="-1">Projects</h2>
+            <ul class="projects">
+              {profile.projects.map((project) => (
+                <li>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer">
+                    <span class="project-still">
+                      <img
+                        src={project.image}
+                        alt=""
+                        width="1024"
+                        height="984"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="project-copy">
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
 
       {
         profile.posts.length > 0 && (

@@ -786,6 +786,79 @@ html[data-theme="dark"] .theme-switch span.to-light {
   margin-bottom: 0;
 }
 
+.projects {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheet .projects a {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  align-items: stretch;
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.sheet .projects a:hover {
+  border-color: var(--link);
+}
+
+.sheet .projects a:hover h3 {
+  color: var(--link);
+}
+
+.project-still {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-height: 6.75rem;
+  padding: 0.7rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.project-still img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet .projects a:hover .project-still img {
+  transform: scale(1.06);
+}
+
+.project-copy {
+  display: grid;
+  align-content: center;
+  gap: 0.2rem;
+  padding: 0.7rem 0.95rem 0.75rem 0.9rem;
+}
+
+.projects h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 680;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.sheet .projects p {
+  margin: 0;
+  color: var(--quiet);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
 .posts {
   display: grid;
   gap: 0.65rem;
@@ -999,6 +1072,24 @@ html[data-theme="dark"] .theme-switch span.to-light {
     gap: 0.4rem;
   }
 
+  .sheet .projects a {
+    grid-template-columns: 1fr;
+  }
+
+  .project-still {
+    height: 8.5rem;
+    min-height: 0;
+    padding: 0.45rem 0.85rem;
+  }
+
+  .project-still img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-height: 0;
+    object-fit: contain;
+  }
+
   .sheet .posts a {
     grid-template-columns: 5.5rem minmax(0, 1fr);
     align-items: stretch;
@@ -1018,6 +1109,7 @@ html[data-theme="dark"] .theme-switch span.to-light {
     height: 100%;
   }
 
+  .project-copy,
   .post-copy {
     padding: 0.6rem 0.75rem 0.65rem 0.7rem;
   }
@@ -1057,10 +1149,12 @@ html[data-theme="dark"] .theme-switch span.to-light {
   }
 
   .carousel.is-animated .skill-group,
+  .project-still img,
   .posts img {
     transition: none;
   }
 
+  .sheet .projects a:hover .project-still img,
   .sheet .posts a:hover img {
     transform: none;
   }
