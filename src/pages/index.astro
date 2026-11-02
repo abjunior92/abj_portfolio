@@ -162,6 +162,20 @@ const marks = [
   </nav>
 
   <article class="sheet">
+    <div class="sheet-edge" aria-hidden="true">
+      <svg class="edge-mark edge-cross" viewBox="0 0 48 48">
+        <path d="M15 15 L33 33 M33 15 L15 33" />
+      </svg>
+      <svg class="edge-mark edge-square" viewBox="0 0 48 48">
+        <rect x="13" y="13" width="22" height="22" />
+      </svg>
+      <svg class="edge-mark edge-circle" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="12" />
+      </svg>
+      <svg class="edge-mark edge-triangle" viewBox="0 0 48 48">
+        <path d="M24 12 L37 35 H11 Z" />
+      </svg>
+    </div>
     <header>
       <h1>{profile.name}</h1>
       <ul class="identity">

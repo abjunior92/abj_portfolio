@@ -154,6 +154,101 @@ body::after {
   );
 }
 
+.sheet-edge {
+  display: none;
+}
+
+@media (min-width: 721px) {
+  .sheet {
+    background: none;
+  }
+
+  .sheet::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 -5.5rem;
+    pointer-events: none;
+    background: radial-gradient(
+      118% 68% at 50% 16%,
+      color-mix(in srgb, var(--paper) 94%, transparent),
+      color-mix(in srgb, var(--paper) 84%, transparent) 58%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  }
+
+  .sheet-edge {
+    --mark: 1.2rem;
+    --edge: color-mix(in srgb, var(--ink) 46%, transparent);
+    display: block;
+    position: absolute;
+    z-index: 1;
+    inset: calc(var(--nav-size) + 2rem) -1.85rem 1.15rem;
+    pointer-events: none;
+  }
+
+  .sheet-edge::before,
+  .sheet-edge::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--mark) + 0.45rem);
+    bottom: calc(var(--mark) + 0.45rem);
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--edge) 4%,
+      color-mix(in srgb, var(--ink) 18%, transparent) 50%,
+      var(--edge) 96%,
+      transparent
+    );
+  }
+
+  .sheet-edge::before {
+    left: 0.56rem;
+  }
+
+  .sheet-edge::after {
+    right: 0.56rem;
+  }
+
+  .edge-mark {
+    position: absolute;
+    width: var(--mark);
+    height: var(--mark);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .edge-cross {
+    top: 0;
+    left: 0;
+    color: #0072ce;
+  }
+
+  .edge-square {
+    top: 0;
+    right: 0;
+    color: #e04b8a;
+  }
+
+  .edge-circle {
+    bottom: 0;
+    left: 0;
+    color: #e10600;
+  }
+
+  .edge-triangle {
+    right: 0;
+    bottom: 0;
+    color: #00a34a;
+  }
+}
+
 .site-nav {
   position: fixed;
   z-index: 4;
@@ -1152,12 +1247,15 @@ html[data-theme="dark"] .theme-switch span.to-light {
 @media print {
   body::before,
   body::after,
-  .shader-field {
+  .shader-field,
+  .sheet-edge {
     display: none;
   }
 
-  .sheet {
+  .sheet,
+  .sheet::before {
     background: none;
+    mask-image: none;
   }
 }
 
