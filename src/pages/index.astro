@@ -17,6 +17,7 @@ import {
   IconSun,
   IconX
 } from "@tabler/icons-astro";
+import ShaderField from "../components/ShaderField.tsx";
 import Layout from "../layouts/Layout.astro";
 import { loadGithubActivity, toWeekColumns } from "../data/github";
 import { profile } from "../data/profile";
@@ -102,6 +103,10 @@ const marks = [
 ---
 
 <Layout title="Abj - Portfolio" description="My Personal Portfolio">
+  <div class="shader-field" aria-hidden="true">
+    <ShaderField client:only="react" />
+  </div>
+
   <div class="marks" aria-hidden="true">
     {
       marks.map((mark) => (
