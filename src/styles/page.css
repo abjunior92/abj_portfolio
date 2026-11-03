@@ -119,27 +119,6 @@ body::after {
   pointer-events: none;
 }
 
-.marks {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.mark {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--s);
-  height: var(--s);
-  color: var(--ink);
-  opacity: var(--mark-opacity);
-  animation: turn var(--d) linear infinite;
-  animation-direction: var(--dir, normal);
-  animation-delay: var(--delay, 0s);
-}
-
 .sheet {
   position: relative;
   z-index: 2;
@@ -175,11 +154,16 @@ body::after {
       color-mix(in srgb, var(--paper) 84%, transparent) 58%,
       transparent 100%
     );
-    mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 13%,
+      #000 87%,
+      transparent 100%
+    );
   }
 
   .sheet-edge {
-    --mark: 1.2rem;
     --edge: color-mix(in srgb, var(--ink) 46%, transparent);
     display: block;
     position: absolute;
@@ -192,8 +176,8 @@ body::after {
   .sheet-edge::after {
     content: "";
     position: absolute;
-    top: calc(var(--mark) + 0.45rem);
-    bottom: calc(var(--mark) + 0.45rem);
+    top: 0;
+    bottom: 0;
     width: 1px;
     background: linear-gradient(
       to bottom,
@@ -211,41 +195,6 @@ body::after {
 
   .sheet-edge::after {
     right: 0.56rem;
-  }
-
-  .edge-mark {
-    position: absolute;
-    width: var(--mark);
-    height: var(--mark);
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .edge-cross {
-    top: 0;
-    left: 0;
-    color: #0072ce;
-  }
-
-  .edge-square {
-    top: 0;
-    right: 0;
-    color: #e04b8a;
-  }
-
-  .edge-circle {
-    bottom: 0;
-    left: 0;
-    color: #e10600;
-  }
-
-  .edge-triangle {
-    right: 0;
-    bottom: 0;
-    color: #00a34a;
   }
 }
 
@@ -423,6 +372,69 @@ html[data-theme="dark"] .theme-switch span.to-light {
   letter-spacing: -0.038em;
   line-height: 0.9;
   text-wrap: balance;
+}
+
+.sheet h1 .hello {
+  display: flex;
+  align-items: baseline;
+  width: max-content;
+  margin: 0 0 0.22rem;
+  font-size: clamp(2.05rem, 4.6vw, 2.85rem);
+  font-weight: 560;
+  letter-spacing: -0.034em;
+  line-height: 0.95;
+  color: color-mix(in srgb, var(--ink) 70%, var(--paper));
+  white-space: nowrap;
+}
+
+.sheet h1 .hello-hi,
+.sheet h1 .hello-im {
+  display: inline-block;
+  animation: hello-pop 1600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sheet h1 .hello-hi {
+  font-weight: 520;
+}
+
+.sheet h1 .hello-im {
+  margin-left: 0.22em;
+  font-weight: 680;
+  animation-delay: 80ms;
+}
+
+.sheet h1 .name-pets {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.55rem;
+  color: var(--ink);
+  vertical-align: -0.05em;
+}
+
+.sheet h1 .name-pets svg {
+  width: 1.85rem;
+  height: 1.85rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes hello-pop {
+  0% {
+    transform: translateY(0.28em) scale(0.92);
+    filter: blur(7px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: none;
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 .identity {
@@ -1059,12 +1071,6 @@ html[data-theme="dark"] .theme-switch span.to-light {
   font-size: 0.95rem;
 }
 
-@keyframes turn {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media (max-width: 720px) {
   html {
     --arc-bl-size: 48vmax;
@@ -1090,12 +1096,6 @@ html[data-theme="dark"] .theme-switch span.to-light {
         color-mix(in srgb, var(--ink) var(--wash-soft), transparent) 52%,
         transparent 74%
       );
-  }
-
-  .mark {
-    width: calc(var(--s) * 0.75);
-    height: calc(var(--s) * 0.75);
-    opacity: 0.2;
   }
 
   .sheet {
@@ -1264,7 +1264,8 @@ html[data-theme="dark"] .theme-switch span.to-light {
     scroll-behavior: auto;
   }
 
-  .mark {
+  .sheet h1 .hello-hi,
+  .sheet h1 .hello-im {
     animation: none;
   }
 

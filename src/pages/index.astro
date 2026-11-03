@@ -9,7 +9,9 @@ import {
   IconBrandWhatsapp,
   IconChevronLeft,
   IconChevronRight,
+  IconCat,
   IconCode,
+  IconDog,
   IconMail,
   IconMapPin,
   IconMenu2,
@@ -84,57 +86,11 @@ const contactIcons = {
   Instagram: IconBrandInstagram
 } as const;
 
-const marks = [
-  { kind: "cross", x: "6%", y: "8%", s: "2.4rem", d: "28s", delay: "-4s" },
-  { kind: "cross", x: "86%", y: "16%", s: "3.1rem", d: "36s", delay: "-12s", dir: "reverse" },
-  { kind: "cross", x: "14%", y: "74%", s: "2.2rem", d: "32s", delay: "-9s" },
-  { kind: "cross", x: "88%", y: "90%", s: "2.8rem", d: "40s", delay: "-24s" },
-  { kind: "square", x: "8%", y: "84%", s: "2.2rem", d: "32s", delay: "-9s" },
-  { kind: "square", x: "90%", y: "7%", s: "2.6rem", d: "30s", delay: "-6s" },
-  { kind: "square", x: "4%", y: "40%", s: "3.4rem", d: "40s", delay: "-18s", dir: "reverse" },
-  { kind: "square", x: "82%", y: "68%", s: "2.3rem", d: "26s", delay: "-3s" },
-  { kind: "circle", x: "18%", y: "18%", s: "2.8rem", d: "34s", delay: "-15s", dir: "reverse" },
-  { kind: "circle", x: "93%", y: "46%", s: "2.1rem", d: "24s", delay: "-7s" },
-  { kind: "circle", x: "22%", y: "88%", s: "3rem", d: "38s", delay: "-20s" },
-  { kind: "triangle", x: "76%", y: "30%", s: "2.7rem", d: "33s", delay: "-11s", dir: "reverse" },
-  { kind: "triangle", x: "8%", y: "58%", s: "2.2rem", d: "29s", delay: "-5s" },
-  { kind: "triangle", x: "70%", y: "86%", s: "3.2rem", d: "42s", delay: "-16s" }
-];
 ---
 
 <Layout title="Abj - Portfolio" description="My Personal Portfolio">
   <div class="shader-field" aria-hidden="true">
     <ShaderField client:only="react" />
-  </div>
-
-  <div class="marks" aria-hidden="true">
-    {
-      marks.map((mark) => (
-        <svg
-          class="mark"
-          style={`--x:${mark.x};--y:${mark.y};--s:${mark.s};--d:${mark.d};--delay:${mark.delay};--dir:${mark.dir ?? "normal"};--ink:${
-            mark.kind === "cross"
-              ? "#0072ce"
-              : mark.kind === "square"
-                ? "#e04b8a"
-                : mark.kind === "circle"
-                  ? "#e10600"
-                  : "#00a34a"
-          }`}
-          viewBox="0 0 48 48"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.25"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          {mark.kind === "cross" && <path d="M15 15 L33 33 M33 15 L15 33" />}
-          {mark.kind === "square" && <rect x="13" y="13" width="22" height="22" />}
-          {mark.kind === "circle" && <circle cx="24" cy="24" r="12" />}
-          {mark.kind === "triangle" && <path d="M24 12 L37 35 H11 Z" />}
-        </svg>
-      ))
-    }
   </div>
 
   <nav class="site-nav" aria-label="On this page" data-page-nav>
@@ -162,22 +118,12 @@ const marks = [
   </nav>
 
   <article class="sheet">
-    <div class="sheet-edge" aria-hidden="true">
-      <svg class="edge-mark edge-cross" viewBox="0 0 48 48">
-        <path d="M15 15 L33 33 M33 15 L15 33" />
-      </svg>
-      <svg class="edge-mark edge-square" viewBox="0 0 48 48">
-        <rect x="13" y="13" width="22" height="22" />
-      </svg>
-      <svg class="edge-mark edge-circle" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="12" />
-      </svg>
-      <svg class="edge-mark edge-triangle" viewBox="0 0 48 48">
-        <path d="M24 12 L37 35 H11 Z" />
-      </svg>
-    </div>
+    <div class="sheet-edge" aria-hidden="true"></div>
     <header>
-      <h1>{profile.name}</h1>
+      <h1>
+        <span class="hello"><span class="hello-hi">Hi,</span><span class="hello-im"> I’m</span></span>
+        {" "}{profile.name}<span class="name-pets" aria-hidden="true"><IconCat /><IconDog /></span>
+      </h1>
       <ul class="identity">
         <li>
           <IconCode aria-hidden="true" />
