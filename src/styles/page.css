@@ -403,26 +403,6 @@ html[data-theme="dark"] .theme-switch span.to-light {
   animation-delay: 80ms;
 }
 
-.sheet h1 .name-pets {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-left: 0.55rem;
-  color: var(--ink);
-  vertical-align: -0.05em;
-}
-
-.sheet h1 .name-pets svg {
-  width: 1.85rem;
-  height: 1.85rem;
-  overflow: visible;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 @keyframes hello-pop {
   0% {
     transform: translateY(0.28em) scale(0.92);
