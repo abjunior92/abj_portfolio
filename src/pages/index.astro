@@ -9,9 +9,7 @@ import {
   IconBrandWhatsapp,
   IconChevronLeft,
   IconChevronRight,
-  IconCat,
   IconCode,
-  IconDog,
   IconMail,
   IconMapPin,
   IconMenu2,
@@ -120,9 +118,10 @@ const contactIcons = {
   <article class="sheet">
     <div class="sheet-edge" aria-hidden="true"></div>
     <header>
+      <div class="intro" data-reveal>
       <h1>
         <span class="hello"><span class="hello-hi">Hi,</span><span class="hello-im"> I’m</span></span>
-        {" "}{profile.name}<span class="name-pets" aria-hidden="true"><IconCat /><IconDog /></span>
+        {" "}{profile.name}
       </h1>
       <ul class="identity">
         <li>
@@ -144,8 +143,9 @@ const contactIcons = {
           </span>
         </li>
       </ul>
+      </div>
 
-      <section class="github" aria-label="GitHub">
+      <section class="github" data-reveal aria-label="GitHub">
         <p class="github-row">
           <a class="github-link" href={profile.github.url} target="_blank" rel="noopener noreferrer">
             <IconBrandGithub aria-hidden="true" />
@@ -196,7 +196,7 @@ const contactIcons = {
     </header>
 
     <main>
-      <section class="carousel" data-skill-carousel>
+      <section class="carousel" data-skill-carousel data-reveal>
         <h2 id="skills-heading" tabindex="-1">My digital skills</h2>
         <p class="carousel-status" data-skill-status aria-live="polite"></p>
         <div class="carousel-frame">
@@ -240,7 +240,7 @@ const contactIcons = {
         </div>
       </section>
 
-      <section>
+      <section data-reveal>
         <h2 id="about" tabindex="-1">About Me</h2>
         <p class="presentation" style="white-space: pre-line;">{profile.about.text}</p>
         <ul class="timeline">
@@ -250,7 +250,7 @@ const contactIcons = {
 
       {
         profile.projects.length > 0 && (
-          <section>
+          <section data-reveal>
             <h2 id="projects" tabindex="-1">Projects</h2>
             <ul class="projects">
               {profile.projects.map((project) => (
@@ -280,7 +280,7 @@ const contactIcons = {
 
       {
         profile.posts.length > 0 && (
-          <section>
+          <section data-reveal>
             <h2 id="blog" tabindex="-1">Blog</h2>
             <ul class="posts">
               {profile.posts.map((post) => (
@@ -309,7 +309,7 @@ const contactIcons = {
         )
       }
 
-      <section>
+      <section data-reveal>
         <h2 id="contact" tabindex="-1">Contact</h2>
         <ul class="contacts">
           {
@@ -337,6 +337,11 @@ const contactIcons = {
 </Layout>
 
 <script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const tip = document.querySelector(".tip");
   const graph = document.querySelector(".graph");
 
@@ -468,8 +473,14 @@ const contactIcons = {
     });
 
     render();
-    window.addEventListener("resize", () => render());
-    document.fonts?.ready.then(() => render());
+    window.addEventListener("resize", () => {
+      render();
+      ScrollTrigger.refresh();
+    });
+    document.fonts?.ready.then(() => {
+      render();
+      ScrollTrigger.refresh();
+    });
     requestAnimationFrame(() => carousel.classList.add("is-animated"));
   }
 
@@ -523,4 +534,38 @@ const contactIcons = {
 
     navMobile.addEventListener("change", () => closeNav(false));
   }
+
+  const revealPieces = (section: Element) => {
+    if (section.classList.contains("carousel")) return [section];
+    const blocks = [...section.children].filter(
+      (node): node is HTMLElement =>
+        node instanceof HTMLElement && !node.classList.contains("tip")
+    );
+    const list = blocks.find((node) =>
+      node.matches(".timeline, .projects, .posts, .contacts")
+    );
+    if (!list) return blocks;
+    return [...blocks.filter((node) => node !== list), ...list.querySelectorAll(":scope > li")];
+  };
+
+  gsap.matchMedia().add("screen and (prefers-reduced-motion: no-preference)", () => {
+    document.querySelectorAll("[data-reveal]").forEach((section) => {
+      const pieces = revealPieces(section);
+      if (pieces.length === 0) return;
+      gsap.from(pieces, {
+        y: 28,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: pieces.length > 1 ? 0.08 : 0,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          once: true
+        }
+      });
+    });
+  });
+
+  window.addEventListener("load", () => ScrollTrigger.refresh());
 </script>
